@@ -157,6 +157,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
           ),
           NTGButton(
             buttonText: "update",
+            onPressedButton:  (){},
           ),
           SizedBox(
             height: 40,
@@ -174,6 +175,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
             width: getScreenWidth(context) - WIDTH_OFFSET,
             margin: EdgeInsets.symmetric(horizontal: 20),
             child: RaisedButton(
+              onPressed:  (){},
                 padding: EdgeInsets.only(left: 10, right: 10),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),

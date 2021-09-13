@@ -55,6 +55,7 @@ class _TaskCreationState extends State<TaskCreationScreen> {
   Widget _buildSaveTask(context) {
     return NTGButton(
       buttonText: "save",
+      onPressedButton: (){},
     );
   }
 }

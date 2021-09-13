@@ -51,7 +51,7 @@ class _LogCardState extends State<LogCard> {
                     ),
                     FittedBox(
                         child: Text(
-                      "mmm",
+                      "11/9/2010",
                       style: normalTextStyle,
                     )),
                     SizedBox(
@@ -63,7 +63,7 @@ class _LogCardState extends State<LogCard> {
                       style: normalTextStyle,
                     )),
                     Text(
-                      "newww",
+                      "12/9/2010",
                       style: normalTextStyle,
                     ),
                   ],

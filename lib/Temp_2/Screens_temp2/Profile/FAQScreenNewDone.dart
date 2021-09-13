@@ -11,21 +11,23 @@ class FAQScreen extends StatefulWidget {
 class _FAQScreenState extends State<FAQScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Flexible(
-            fit: FlexFit.loose,
-            flex: 1,
-            child: raisedButtonslist(context),
-          ),
-          Flexible(
-            fit: FlexFit.loose,
-            flex: 8,
-            child: getTextItemList(),
-          ),
-        ]);
+    return Material(
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Flexible(
+              fit: FlexFit.loose,
+              flex: 1,
+              child: raisedButtonslist(context),
+            ),
+            Flexible(
+              fit: FlexFit.loose,
+              flex: 8,
+              child: getTextItemList(),
+            ),
+          ]),
+    );
   }
 
   Container raisedButtonslist(BuildContext context) {
@@ -103,7 +105,7 @@ class _FAQScreenState extends State<FAQScreen> {
             children: [
               Expanded(
                 child: Text(
-                  question ?? 'questtttttttttttion ?',
+                  question ?? 'question 1?',
                   style: TextStyle(fontSize: 18),
                 ),
               ),

@@ -72,6 +72,7 @@ class _WorkingDaysHoursState extends State<WorkingDaysHours> {
                 padding: EdgeInsets.only(left: 20, right: 20),
                 child: NTGButton(
                   buttonText: "save",
+                  onPressedButton: (){},
                 )),
             SizedBox(
               height: 40,

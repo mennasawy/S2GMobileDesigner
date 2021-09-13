@@ -67,7 +67,7 @@ class _FAQScreenState extends State<FAQScreen> {
                 ),
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                child: raisedButtonsItemList()[index],
+                child: raisedButtonsItemList(index)[index],
               );
             }));
   }
@@ -86,7 +86,7 @@ class _FAQScreenState extends State<FAQScreen> {
           ),
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-                title: Text("texttttttttttttt"),
+                title: Text("text"),
                 trailing: IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
                 ));
@@ -94,23 +94,24 @@ class _FAQScreenState extends State<FAQScreen> {
         ));
   }
 
-  List<Widget> raisedButtonsItemList() {
+  List<Widget> raisedButtonsItemList(int index) {
     return [
-      buildRaisedButton(),
-      buildRaisedButton(),
-      buildRaisedButton(),
-      buildRaisedButton(),
+      buildRaisedButton(index),
+      buildRaisedButton(index),
+      buildRaisedButton(index),
+      buildRaisedButton(index),
     ];
   }
 
-  RaisedButton buildRaisedButton() {
+  RaisedButton buildRaisedButton(int index) {
     return RaisedButton(
+      onPressed: () {},
       shape: getRoundedRectangleBorder(),
-      color: Colors.white,
+      color: index == 0 ? BLACK : Colors.white,
       child: Text(
         "title",
         style: TextStyle(
-          color: Colors.black,
+          color: index == 0 ? WHITE : BLACK,
         ),
       ),
     );

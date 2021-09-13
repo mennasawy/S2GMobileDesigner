@@ -32,7 +32,7 @@ class _AnswersState extends State<Answers> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(30, 20, 20, 0),
                   child: Text(
-                    "????????????????????????",
+                    "question 1 ?",
                     style: TextStyle(
                         fontSize: 28, fontWeight: FontWeight.bold, color: BLUE),
                   ),
@@ -42,7 +42,7 @@ class _AnswersState extends State<Answers> {
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(20, 10, 50, 10),
-                  child: Text("answerrrrrrrrrrrrrr", style: normalTextStyle),
+                  child: Text("answerr 1", style: normalTextStyle),
                 ),
                 SizedBox(
                   height: 30,

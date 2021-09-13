@@ -166,12 +166,12 @@ class ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   List<Text> menuItemsTitles() {
     return [
-      cardTitle('Profile_editAccountSettings'),
-      cardTitle('Profile_changePassword'),
-      cardTitle('Profile_pushNotificationSettings'),
-      cardTitle('Profile_Language'),
-      cardTitle('Profile_Privacy'),
-      cardTitle('Profile_About'),
+      cardTitle('editAccountSettings'),
+      cardTitle('changePassword'),
+      cardTitle('pushNotificationSettings'),
+      cardTitle('Language'),
+      cardTitle('Privacy'),
+      cardTitle('About'),
       Text(
         "log out",
         style: TextStyle(

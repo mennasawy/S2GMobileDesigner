@@ -9,6 +9,7 @@ class AppMenus extends StatefulWidget {
 }
 
 class _CreateModulesScreen extends State<AppMenus> {
+  List<String> menu = ["menu name 1", "menu name 2"];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,7 +33,7 @@ class _CreateModulesScreen extends State<AppMenus> {
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                itemCount: 2,
+                itemCount: menu.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     //  child: Container(
@@ -47,7 +48,7 @@ class _CreateModulesScreen extends State<AppMenus> {
                           title: SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: Text(
-                                "menu",
+                                menu[index],
                                 style: normalTextStyle,
                               )),
                           trailing: Icon(

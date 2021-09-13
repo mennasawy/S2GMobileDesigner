@@ -5,6 +5,8 @@ import 'package:templets/Utilities/WidgetsUtilites/AppBars/AppBarTemplate1/NTGAp
 import 'package:templets/Utilities/app_constants.dart';
 import 'package:templets/Utilities/utility_methods.dart';
 import 'DashboardWidgetUtils.dart';
+import 'charts/drawGridChart.dart';
+import 'charts/drawPieChart.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -75,12 +77,7 @@ class DashboardState extends State<Dashboard> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Center(
-                  child: Text(
-                    "Chart",
-                    style: normalTextStyle,
-                  ),
-                ),
+                CounterChartUDA(),
                 Container(
 //                  height: getScreenHeight(context) * 0.65, //600
                   constraints: BoxConstraints(
@@ -100,10 +97,12 @@ class DashboardState extends State<Dashboard> {
                       ),
                     ],
                   ),
-                  child: listRowItemsWidget(
-                    context,
+                  child: drawPieChart(
+                    listRowItems: listRowItemsWidget,
+                    chartTitle: "pie chart",
                   ),
                 ),
+                GridChart()
               ],
             ),
           );
@@ -214,5 +213,73 @@ class DashboardState extends State<Dashboard> {
         elevation: 5,
       ),
     );
+  }
+
+  Widget CounterChartUDA() {
+    return InkWell(
+      onTap: () {}, // () => _selectedChart(context),
+      splashColor: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        height: getScreenHeight(context) * 0.17,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: counterChartDetailsData(),
+      ),
+    );
+  }
+
+  Widget counterChartDetailsData() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            "counter chart uda",
+            style: Theme.of(context)
+                .textTheme
+                .title, // TextStyle(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: Row(
+              //  crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 15.0, bottom: 10),
+                  child: CircleAvatar(
+                    backgroundColor: TRANSPARENT,
+//                    radius: 34,
+                    child: Icon(
+                      Icons.home,
+                      size: 30,
+                    ), // FaIcon(FontAwesomeIcons.gamepad),
+                  ),
+                ),
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '10',
+                      style: normalBoldedTextStyle,
+                    ),
+                    Text(
+                      "sub title",
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+                // SizedBox(
+                //   width: 30,
+                // ),
+              ],
+            ),
+          ),
+        ]);
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:templets/Utilities/WidgetsUtilites/AppBars/AppBars.dart';
 import 'package:templets/Utilities/app_constants.dart';
 import 'package:templets/Utilities/utility_methods.dart';
+import 'package:templets/Utilities/app_constants.dart';
 
 class Temp2ProfileSettingScreen extends StatelessWidget {
   @override
@@ -147,11 +148,11 @@ class Temp2ProfileSettingScreen extends StatelessWidget {
       //   height: 30,
       // ),
       // buttonImage(imageWidet(IMG_PROFILE_PLACEHOLDER)),
-      buttonImage(imageWidet("", context)),
-      buttonImage(imageWidet("", context)),
-      buttonImage(imageWidet("IC_LANGUAGE", context)),
-      buttonImage(imageWidet("IC_NEWSPAPER", context)),
-      buttonImage(imageWidet("IC_INFO", context)),
+      buttonImage(imageWidet(IC_CHANGE_PASSWORD, context)),
+      buttonImage(imageWidet(IC_PUSH_SETTING, context)),
+      buttonImage(imageWidet(IC_LANGUAGE, context)),
+      buttonImage(imageWidet(IC_NEWSPAPER, context)),
+      buttonImage(imageWidet(IC_INFO, context)),
       // buttonImage(
       //   Icon(
       //     Icons.info,
@@ -177,10 +178,11 @@ class Temp2ProfileSettingScreen extends StatelessWidget {
     );
   }
 
-  Icon imageWidet(String image, BuildContext context) {
-    return Icon(
-      Icons.ac_unit,
-      size: MediaQuery.of(context).size.height * 0.05,
+  Image imageWidet(String image, BuildContext context) {
+    return Image.asset(
+      image,
+      fit: BoxFit.cover,
+      height: MediaQuery.of(context).size.height * 0.05,
     );
   }
 }

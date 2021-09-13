@@ -63,7 +63,7 @@ class LogState extends State<Log> {
                     style: normalTextStyle,
                   ),
                   Text(
-                    '11/1',
+                    'admin',
                     style: normalTextStyle,
                   ) //
                 ],
@@ -73,7 +73,7 @@ class LogState extends State<Log> {
                 children: <Widget>[
                   FittedBox(
                     child: Text(
-                      "admin",
+                      "from",
                       style: normalBoldedTextStyle,
                     ),
                   ),

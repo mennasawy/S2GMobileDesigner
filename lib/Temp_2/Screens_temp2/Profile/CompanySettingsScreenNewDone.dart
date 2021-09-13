@@ -52,6 +52,7 @@ class _SettingState extends State<NewSettingScreen> {
                     buttonWidth: getScreenWidth(context) * 0.8,
                     buttonHeight: 40,
                     buttonText: "QR Scan",
+                    onPressedButton: (){},
                   ),
                   SizedBox(
                     height: 10,
@@ -65,6 +66,7 @@ class _SettingState extends State<NewSettingScreen> {
                     height: 10,
                   ),
                   BasicButton(
+                      onPressedButton: (){},
                       textColor: WHITE,
                       bgColor: GREEN,
                       buttonWidth: getScreenWidth(context) * 0.8,

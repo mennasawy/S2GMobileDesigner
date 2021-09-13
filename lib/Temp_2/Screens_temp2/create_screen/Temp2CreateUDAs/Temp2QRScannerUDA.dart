@@ -130,7 +130,7 @@ class _Temp2QRScannerUDAState extends State<Temp2QRScannerUDA> {
                   borderRadius: BorderRadius.circular(TEXTFIELD_BORDER_RADUIS),
                 ),
                 child: IconButton(
-                  icon: Icon(Icons.qr_code),
+                  icon: Icon(Icons.settings_overscan),
                   onPressed: _scanQR,
                 ),
               ),

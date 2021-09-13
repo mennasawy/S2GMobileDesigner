@@ -77,7 +77,7 @@ class NewSettingState extends State<NewSetting> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
-            child: Text("Sitting_server"),
+            child: Text("server"),
           ),
           Padding(
               padding: const EdgeInsets.fromLTRB(15.10, 0, 15, 5),
@@ -89,7 +89,7 @@ class NewSettingState extends State<NewSetting> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
-            child: Text("Sitting_port"),
+            child: Text("port"),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -121,7 +121,7 @@ class NewSettingState extends State<NewSetting> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
-            child: Text("Sitting_companyName"),
+            child: Text("companyName"),
           ),
           Padding(
               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -134,7 +134,7 @@ class NewSettingState extends State<NewSetting> {
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
             child: Text(
-              "Sitting_deviceID",
+              "deviceID",
             ),
           ),
           Container(
@@ -178,7 +178,8 @@ class NewSettingState extends State<NewSetting> {
         Column(
           children: [
             BlueRaisedButtonWidget(
-              hinttext: "Setting_ScanQR",
+              hinttext: "Scan QR",
+              onpressed:  (){},
             ),
             SizedBox(
               height: getScreenHeight(context) * 0.02,
@@ -186,13 +187,15 @@ class NewSettingState extends State<NewSetting> {
           ],
         ),
         BlueRaisedButtonWidget(
-          hinttext: "Sitting_checkLicense",
+          hinttext: "check license",
+          onpressed:  (){},
         ),
         SizedBox(
           height: getScreenHeight(context) * 0.02,
         ),
         NTGButton(
-          buttonText: "Sitting_save",
+          buttonText: "save",
+          onPressedButton:  (){},
         ),
         SizedBox(
           height: 20,

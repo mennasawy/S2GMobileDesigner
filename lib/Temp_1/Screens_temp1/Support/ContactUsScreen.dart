@@ -113,6 +113,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
       width: getScreenWidth(context),
       child: NTGButton(
         buttonText: "send message",
+        onPressedButton: () {},
       ),
     );
   }

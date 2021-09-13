@@ -33,7 +33,7 @@ class _AppsTempScreenState extends State<AppsTempScreen> {
           Expanded(
             flex: 5,
             child: ListView.builder(
-              itemCount: 2,
+              itemCount: 1,
               itemBuilder: (context, index) {
                 return Container(
                   padding: EdgeInsets.only(top: 20),

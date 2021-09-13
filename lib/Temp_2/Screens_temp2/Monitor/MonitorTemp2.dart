@@ -29,16 +29,11 @@ class _MonitorScreen2State extends State<MonitorScreen2> {
         resizeToAvoidBottomInset: true,
         key: _scaffoldKey,
         backgroundColor: GREY,
-        // ThemeManager.themeColor(
-        //     ThemeSection.mainScreenBackground, ThemeProperty.backgroundColor),
+
         appBar: Template2AppBars(
           appBarType: Template2AppBarType.secendary,
           screenName: "monitor",
         ),
-//        drawer: Consumer<SelectedAppScreenProvider>(
-//            builder: (context, selectedAppScreen, child) {
-//          return AppModulesCustomDrawer();
-//        }),
         body: Container(margin: EdgeInsets.all(5), child: buildMonitorBody()),
         bottomNavigationBar: BottomNavigatioBar(
           context: context,
@@ -202,7 +197,7 @@ class _MonitorScreen2State extends State<MonitorScreen2> {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Text(
-                "caption:value",
+                "uda name1 :value",
                 style: normalTextStyle,
               ),
             ),
@@ -269,7 +264,7 @@ class _MonitorScreen2State extends State<MonitorScreen2> {
         itemBuilder: (context, position) => Padding(
             padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 2.0),
             child: Text(
-              "age : 10",
+              "uda name$index : value$index",
               style: normalTextStyle,
               overflow: TextOverflow.ellipsis,
             )),

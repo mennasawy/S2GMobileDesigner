@@ -33,7 +33,6 @@ import 'package:templets/Temp_1/Screens_temp1/reset_password_screen.dart';
 import 'package:templets/Temp_1/Screens_temp1/settings_screen.dart';
 import 'package:templets/Temp_1/Screens_temp1/short_cuts_screen.dart';
 import 'package:templets/Temp_1/Screens_temp1/task_form_screen(tasks).dart';
-import 'package:templets/Temp_1/Screens_temp1/tasks(to-do%20list)screen.dart';
 import 'package:templets/Temp_1/Screens_temp1/this_week_plan_screen(tasks).dart';
 
 class List_temp1 extends StatelessWidget {
@@ -134,9 +133,9 @@ class List_temp1 extends StatelessWidget {
                 case 'about screen':
                   Navigator.of(context).pushNamed(aboutScreen1.routeName);
                   break;
-                case 'tasks(to-do list) screen':
-                  Navigator.of(context).pushNamed(TaskToDoScreen.routeName);
-                  break;
+//                case 'tasks(to-do list) screen':
+//                  Navigator.of(context).pushNamed(TaskToDoScreen.routeName);
+//                  break;
                 case 'chart detail screen':
                   Navigator.of(context).pushNamed(ChartDetail.routeName);
                   break;

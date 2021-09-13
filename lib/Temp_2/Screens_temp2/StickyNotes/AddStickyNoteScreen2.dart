@@ -79,6 +79,7 @@ class _AddStickyNoteScreen2State extends State<AddStickyNoteScreen2> {
           buttonHeight: 45,
           buttonWidth: 200,
           buttonText: "save",
+          onPressedButton: () {},
         ),
       ),
     );

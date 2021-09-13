@@ -182,7 +182,7 @@ class _MultiMediaUdaState extends State<MultiMediaUda>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                        icon: Icon(Icons.edit_outlined),
+                        icon: Icon(Icons.edit),
                         onPressed: () {
                           buildinputDialog();
                         }),
@@ -217,7 +217,7 @@ class _MultiMediaUdaState extends State<MultiMediaUda>
         width: 300,
         child: IconButton(
           icon: Icon(
-            Icons.add_a_photo_outlined,
+            Icons.add_a_photo,
             size: 50,
             color: GREY,
           ),

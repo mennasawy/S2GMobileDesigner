@@ -26,6 +26,7 @@ class NotificationsSettingsScreenState
           getRadioListWidget(),
           NTGButton(
             buttonText: "save",
+            onPressedButton:  (){},
           ),
         ]),
       ),

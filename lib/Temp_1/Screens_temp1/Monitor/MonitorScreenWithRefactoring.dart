@@ -183,10 +183,15 @@ class _Monitor extends State<MonitorNew> {
   }
 
   Widget buildUDAValueRow(BuildContext context, int position, int index) {
+    List udasWithValues = [
+      "uda name1 : value1",
+      "uda name2 : value2",
+      "uda name3 : value3",
+    ];
     return Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0.0),
         child: Text(
-          "age : 10",
+          udasWithValues[index],
           style: normalTextStyle,
           overflow: TextOverflow.ellipsis,
         ));
@@ -251,7 +256,7 @@ class _Monitor extends State<MonitorNew> {
   Widget buildSearchList() {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 3,
+      itemCount: 1,
       itemBuilder: (context, index) {
         return GestureDetector(
           child: Container(
@@ -260,7 +265,7 @@ class _Monitor extends State<MonitorNew> {
             child: Row(
               children: <Widget>[
                 Text(
-                  'uda :',
+                  'uda name1:',
                   style: normalLightBlueTextStyle,
                 ),
                 Text(
@@ -308,7 +313,7 @@ class _Monitor extends State<MonitorNew> {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Text(
-                "value",
+                "uda name1: value",
                 style: normalTextStyle,
               ),
             ),

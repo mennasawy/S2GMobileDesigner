@@ -99,6 +99,7 @@ class _ChangePassWordNewScreenState extends State<ChangePassWordNewScreen> {
         buttonWidth: getScreenWidth(context) * 0.4,
         buttonHeight: getScreenWidth(context) * 0.12,
         buttonText: "save",
+        onPressedButton: () {},
       ),
     );
   }

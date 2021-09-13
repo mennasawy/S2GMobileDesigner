@@ -44,6 +44,7 @@ class _FilterAssignmentInfoState extends State<FilterAssignmentInfo> {
       ),
       NTGButton(
         buttonText: "ADD",
+        onPressedButton: () {},
       )
     ]);
   }

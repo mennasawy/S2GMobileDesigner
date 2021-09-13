@@ -17,11 +17,14 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: NTGAppBar(
-            appBarType: AppBarType.appBarWithBack, pageName: "laonguage"),
+            appBarType: AppBarType.appBarWithBack, pageName: "language"),
         body: Column(children: <Widget>[
           getHeaderWidget(),
           getFooterWidget(),
-          NTGButton(buttonText: "save"),
+          NTGButton(
+            buttonText: "save",
+            onPressedButton: () {},
+          ),
         ]),
       ),
     );

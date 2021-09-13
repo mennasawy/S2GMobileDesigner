@@ -79,12 +79,14 @@ class LoginTemp2 extends StatelessWidget {
             textColor: WHITE,
             buttonWidth: getScreenWidth(context) * 0.8,
             buttonText: "login",
+            onPressedButton: () {},
           ),
           BasicButton(
             bgColor: GREY,
             textColor: BLUE,
             buttonWidth: getScreenWidth(context) * 0.8,
             buttonText: "Setting",
+            onPressedButton: () {},
           )
         ],
       ),

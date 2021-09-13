@@ -58,6 +58,7 @@ class _MonitorFilterSearchTemp2State extends State<MonitorFilterSearchTemp2> {
                 child: BasicButton(
                   buttonText: "filter",
                   buttonHeight: getScreenHeight(context) * 0.09,
+                  onPressedButton: (){},
                 ),
               ),
             ),
@@ -70,6 +71,7 @@ class _MonitorFilterSearchTemp2State extends State<MonitorFilterSearchTemp2> {
                 child: BasicButton(
                   buttonText: "find all data",
                   buttonHeight: getScreenHeight(context) * 0.09,
+                  onPressedButton: (){},
                 ),
               ),
             ),
@@ -80,6 +82,7 @@ class _MonitorFilterSearchTemp2State extends State<MonitorFilterSearchTemp2> {
         ),
         BlueRaisedButtonWidget(
           hinttext: "save",
+          onpressed: (){},
         ),
         SizedBox(
           height: getScreenHeight(context) * 0.0095,
@@ -87,6 +90,7 @@ class _MonitorFilterSearchTemp2State extends State<MonitorFilterSearchTemp2> {
         BlueRaisedButtonWidget(
           hinttext: "delete template",
           color: "FFDC3B41",
+          onpressed: (){},
         )
       ],
     );
@@ -410,6 +414,7 @@ class _MonitorFilterSearchTemp2State extends State<MonitorFilterSearchTemp2> {
           ),
           BasicButton(
             buttonText: "save",
+            onPressedButton: (){},
           )
         ],
       ),

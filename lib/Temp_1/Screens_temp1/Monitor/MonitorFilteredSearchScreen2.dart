@@ -59,6 +59,7 @@ class _FilteredSearchAsWebState extends State<FilteredSearchAsWeb> {
                 child: NTGButton(
                   buttonText: "filter data",
                   fontSizePercentage: 0.025,
+                  onPressedButton: (){},
                 ),
               ),
             ),
@@ -72,6 +73,8 @@ class _FilteredSearchAsWebState extends State<FilteredSearchAsWeb> {
                 child: NTGButton(
                   buttonText: "find all data",
                   fontSizePercentage: 0.025,
+                  onPressedButton: (){},
+
                 ),
               ),
             ),
@@ -82,6 +85,7 @@ class _FilteredSearchAsWebState extends State<FilteredSearchAsWeb> {
         ),
         BlueRaisedButtonWidget(
           hinttext: "save template",
+          onpressed: (){},
         ),
         SizedBox(
           height: getScreenHeight(context) * 0.0095,
@@ -315,13 +319,14 @@ class _FilteredSearchAsWebState extends State<FilteredSearchAsWeb> {
       width: MediaQuery.of(context).size.width * 0.75,
       height: getScreenHeight(context) * 0.07,
       child: RaisedButton(
+        onPressed: (){},
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
             side: BorderSide(color: Main_Red)),
         elevation: 0.5,
         textColor: Main_Red,
         color: Colors.white,
-        disabledColor: Main_Red,
+//        disabledColor: Main_Red,
         child: Text("delete temp", style: normalTextStyle),
       ),
     );

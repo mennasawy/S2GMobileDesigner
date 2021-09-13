@@ -78,7 +78,10 @@ class ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget resetPasswordButtonWidget() {
     return Padding(
         padding: new EdgeInsets.only(left: 50.0, right: 50.0),
-        child: NTGButton(buttonText: "reset password"));
+        child: NTGButton(
+          buttonText: "reset password",
+          onPressedButton: () {},
+        ));
   }
 
   Widget FooterTextWidget() {
@@ -92,9 +95,7 @@ class ResetPasswordScreenState extends State<ResetPasswordScreen> {
         FooterWidget(
           textTitle: "",
           buttonTitle: "login",
-          buttonAction: () {
-            Navigator.pop(context);
-          },
+          buttonAction: () {},
         ),
       ],
     );

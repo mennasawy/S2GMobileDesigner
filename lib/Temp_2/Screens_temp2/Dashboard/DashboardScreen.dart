@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:templets/Temp_1/Screens_temp1/Dashboard/DashboardWidgetUtils.dart';
+import 'package:templets/Temp_1/Screens_temp1/Dashboard/charts/drawGridChart.dart';
+import 'package:templets/Temp_1/Screens_temp1/Dashboard/charts/drawPieChart.dart';
 import 'package:templets/Utilities/WidgetsUtilites/AppBars/AppBars.dart';
 import 'package:templets/Utilities/WidgetsUtilites/Template2/DecorationUtils.dart';
 import 'package:templets/Utilities/WidgetsUtilites/Template2/Temp2WidgetsWithBorder.dart';
@@ -221,6 +223,7 @@ class _DashboardScreen2State extends State<DashboardScreen2> {
           ],
         ),
         child: FlatButton(
+          onPressed: (){},
 //        minWidth: 80,
 //        height: 40,
           shape: RoundedRectangleBorder(
@@ -244,21 +247,29 @@ class _DashboardScreen2State extends State<DashboardScreen2> {
         shrinkWrap: true,
         itemCount: 1,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            padding: const EdgeInsets.all(9.0),
-            child: Temp2WidgetBorder(
-              isMandatoryUDA: false,
-              title: "chart",
-              child: Container(
-                constraints: BoxConstraints(
-                  minHeight: 200,
-                  maxHeight: 470,
-                ),
-                child: listRowItemsWidget(
-                  context,
+          return Column(
+            children: <Widget>[
+//              CounterChartUDA(),
+
+              GridChart(),
+              Container(
+                padding: const EdgeInsets.all(9.0),
+                child: Temp2WidgetBorder(
+                  isMandatoryUDA: false,
+                  title: "chart",
+                  child: Container(
+                    constraints: BoxConstraints(
+                      minHeight: 200,
+                      maxHeight: 470,
+                    ),
+                    child: drawPieChart(
+                      listRowItems: listRowItemsWidget,
+                      chartTitle: "pie chart",
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           );
         });
   }

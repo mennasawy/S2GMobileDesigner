@@ -45,12 +45,12 @@ class LoginScreen extends StatelessWidget {
               height: 80,
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: BasicTextInputUDA(
-                title: "user name",
+                title: "Email",
                 isMandatory: true,
                 labelColor: null,
                 isVisible: true,
                 isUserName: true,
-                inputHint: "email",
+                inputHint: "ex: email@ntg.com",
               ),
             ),
             Spacer(),
@@ -79,6 +79,7 @@ class LoginScreen extends StatelessWidget {
 //            ),
             NTGButton(
               buttonText: "Sign in",
+              onPressedButton: (){},
             ),
             SizedBox(
               height: (widgetHeight) * 0.05,
@@ -86,6 +87,7 @@ class LoginScreen extends StatelessWidget {
             BlueRaisedButtonWidget(
               color: null,
               hinttext: "Setting",
+              onpressed: (){},
             ),
             Spacer()
           ],
@@ -169,6 +171,7 @@ class LoginScreen extends StatelessWidget {
               child: FooterWidget(
                 textTitle: "",
                 buttonTitle: 'reset_password',
+                buttonAction: (){},
               )),
           Expanded(
             flex: 2,

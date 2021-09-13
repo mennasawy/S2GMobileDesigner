@@ -67,6 +67,7 @@ class _Temp2ResetPasswordScreenState extends State<Temp2ResetPasswordScreen> {
             textColor: WHITE,
             buttonWidth: getScreenWidth(context) * 0.75,
             buttonText: "Reset Password",
+            onPressedButton: (){},
           ),
         ],
       ),

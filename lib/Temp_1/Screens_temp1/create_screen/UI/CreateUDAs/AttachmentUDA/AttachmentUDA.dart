@@ -142,7 +142,7 @@ class _AttachmentUDAState extends State<AttachmentUDA>
               SizedBox(
                 height: 10,
               ),
-              Icon(Icons.upload_file),
+              Icon(Icons.file_upload),
               Stack(
                 children: <Widget>[
                   Center(

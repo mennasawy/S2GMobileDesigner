@@ -26,7 +26,6 @@ import 'Screens_temp2/settings_screen.dart';
 import 'Screens_temp2/short_cuts_screen.dart';
 import 'Screens_temp2/Sticky_Notes_screen.dart';
 import 'Screens_temp2/task_form_screen(tasks).dart';
-import 'Screens_temp2/tasks(to-do list)screen.dart';
 import 'Screens_temp2/this_week_plan_screen(tasks).dart';
 
 class List_temp2 extends StatelessWidget {
@@ -123,9 +122,9 @@ class List_temp2 extends StatelessWidget {
                 case 'about screen':
                   Navigator.of(context).pushNamed(aboutScreen2.routeName);
                   break;
-                case 'tasks(to-do list) screen':
-                  Navigator.of(context).pushNamed(TaskToDoScreen2.routeName);
-                  break;
+//                case 'tasks(to-do list) screen':
+//                  Navigator.of(context).pushNamed(TaskToDoScreen2.routeName);
+//                  break;
                 case 'chart detail screen':
                   Navigator.of(context).pushNamed(ChartDetail2.routeName);
                   break;

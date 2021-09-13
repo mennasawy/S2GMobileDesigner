@@ -73,7 +73,7 @@ class _MYTodoListScreenState extends State<MYTodoListScreen> {
 
   Widget myToDoListWidget() {
     return ListView.builder(
-      itemCount: 2,
+      itemCount: 1,
       itemBuilder: (ctx, index) => TodoItem(),
     );
   }

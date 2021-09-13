@@ -66,6 +66,7 @@ class _ApplicationsState extends State<Applications> {
       width: MediaQuery.of(context).size.width / 2 - 5,
       height: MediaQuery.of(context).size.width / 2 - 5,
       child: RaisedButton(
+        onPressed: () {},
         //have to add theme.............important
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(
