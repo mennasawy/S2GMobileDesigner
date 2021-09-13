@@ -1,0 +1,431 @@
+import 'dart:io';
+import 'dart:ui';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:templets/Temp_1/Screens_temp1/create_screen/Models/CreateUDAs/Attachment/attach_RowData.dart';
+import 'package:templets/Temp_1/Screens_temp1/create_screen/Models/UDAsWithValues.dart';
+import 'package:templets/Temp_1/Screens_temp1/create_screen/Presenter/CreateUDAs/Attachment/AttachUploadPresenter.dart';
+import 'package:templets/Temp_1/Screens_temp1/create_screen/UI/CreateUDAs/AttachmentUDA/AttachmentUDA.dart';
+import 'package:templets/Temp_1/Screens_temp1/create_screen/UI/CreateUDAs/AttachmentUDA/attachmentViewInterface/AttachUploadViewInterface.dart';
+import 'package:templets/Temp_1/Screens_temp1/create_screen/UI/CreateUtils.dart';
+import 'package:templets/Utilities/WidgetsUtilites/Alerts/dual_action_alert.dart';
+import 'package:templets/Utilities/WidgetsUtilites/FontUtils.dart';
+import 'package:templets/Utilities/WidgetsUtilites/Template2/BasicButton.dart';
+import 'package:templets/Utilities/WidgetsUtilites/Template2/Temp2WidgetsWithBorder.dart';
+import 'package:templets/Utilities/app_constants.dart';
+import 'package:templets/Utilities/utility_methods.dart';
+
+class Temp2AttachmentUDA extends StatefulWidget {
+  final UDAsWithValues uda;
+  final Function onAttachmentListChange;
+  final String validationMessage;
+  bool isMandatory;
+  final int objectID;
+  final FormType mode;
+  final bool isValid;
+  final bool isVisible;
+  final bool isReadOnly;
+  final bool validationCondition;
+  AttachmentMode attachmentMode;
+//  final String attachmentId;
+  Temp2AttachmentUDA(
+      {Key key,
+      this.mode,
+      this.onAddAttachment,
+      this.validationMessage,
+      this.isMandatory,
+      this.onAttachmentListChange,
+      this.isValid,
+      this.isVisible,
+      this.isReadOnly,
+      this.validationCondition,
+      this.attachmentMode,
+      this.uda,
+      this.objectID});
+
+  final Function onAddAttachment;
+
+  @override
+  _AttachmentUDAState createState() => _AttachmentUDAState();
+}
+
+class _AttachmentUDAState extends State<Temp2AttachmentUDA>
+    implements AttachUploadViewInterface {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  ScrollController _scrollController = ScrollController();
+
+  AttachmentUDAPresenter _presenter;
+
+  @override
+  void initState() {
+    presenterInitiallization();
+  }
+
+  presenterInitiallization() {
+    _presenter = AttachmentUDAPresenter(this, context,
+        uda: widget.uda,
+        onAttachmentListChange: widget.onAttachmentListChange,
+        objectID: widget.objectID,
+        isVisible: widget.isVisible,
+        isReadOnly: widget.isReadOnly,
+        isValid: widget.isValid,
+        mode: widget.mode,
+        validationMessage: widget.validationMessage,
+        validationCondition: widget.validationCondition,
+        isMandatory: widget.isMandatory,
+        attachmentMode: widget.attachmentMode);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return drawWidgetOrEmptyContainer(
+        _presenter.isVisibleWidget(),
+        getUDAWithTitleWidget(
+            context,
+            getAttachmentBody(),
+            "",
+            _presenter.uda.udaDescription,
+            _presenter.validationMessage,
+            _presenter.uda.isValidationCondMsgWarn,
+            _presenter.isMandatory,
+            hexToColor(_presenter.uda.labelColor)));
+  }
+
+  Widget getAttachmentBody() {
+    return Temp2WidgetBorder(
+      isMandatoryUDA: false,
+      title: _presenter.uda.udaCaption,
+      child: Stack(
+        children: <Widget>[
+          attachmentUDAContent(),
+          _presenter.isUploading() ? DrawProgressBar() : Container()
+        ],
+      ),
+    );
+  }
+
+  Widget attachmentUDAContent() {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+//      mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          drawWidgetOrEmptyContainer(
+              isNotEmptyList(_presenter.attachmentList), buildAttachmentList()),
+          addNewAttachmentButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget addNewAttachmentButton() {
+    return BasicButton(
+        buttonChild: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              "Upload",
+              style: FontUtils.buttonTitlesTextStyle(WHITE),
+            ),
+            Icon(Icons.phone_iphone),
+          ],
+        ),
+        onPressedButton:
+            _presenter.isButtonActive() ? () => pickFileCheck() : null);
+//            _noteUDAPresenter.isReadOnly ? onAddNoteButtonAction : null);
+  }
+
+  buildAttachmentList() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: ListView.builder(
+        controller: _scrollController,
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: _presenter.attachmentListLength(),
+        itemBuilder: (context, index) => attachmentItemCard(index),
+      ),
+    );
+  }
+
+  Widget attachmentItemCard(int index) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          attacmentItemCardDetails(index),
+//          attachmentItemCardButtons(index),
+        ],
+      ),
+    );
+  }
+
+  Widget attacmentItemCardDetails(int index) {
+    return ListTile(
+        leading: iconWidget(_presenter.getAttachmentFileType(index)),
+        title: Text(
+          trimText(_presenter.getImageFileName(index), 20),
+          style: FontUtils.normalTextStyle(BLACK),
+        ),
+        subtitle: Text(
+          'Uploaded by : ${_presenter.attachmentList[index].uploadedby} - ${dateFormat(_presenter.attachmentList[index].date, format: "MM/dd/yyyy")}',
+          style: FontUtils.normalTextStyle(GREY),
+        ));
+  }
+
+  Widget attachmentItemCardButtons(int index) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        drawImage(TEMP2_IC_DELETE_2, _presenter.deleteIconAction(index)),
+        drawImage(
+            TEMP2_DOWNLOAD_ATTACH_2, _presenter.downloadButtonAction(index)),
+        drawImage(TEMP2_NOTE_ATTACH_2, () {}),
+      ],
+    );
+  }
+
+  Widget drawImage(String iconName, Function onIconTapped) {
+    return GestureDetector(
+      onTap: () => onIconTapped,
+      child: Container(
+        margin: EdgeInsets.all(5),
+        child: Icon(Icons.phone_iphone),
+      ),
+    );
+  }
+
+  void pickFileCheck() {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        backgroundColor: WHITE,
+        context: context,
+        builder: (builder) {
+          return Platform.isIOS
+              ? iOSPickFileBottomSheet()
+              : androidPickFileBottomSheet();
+          // Container(
+          //   height: getScreenHeight(context) * 0.25,
+          //   padding: EdgeInsets.all(10),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: <Widget>[
+          //       ListTile(
+          //         title: Text(
+          //           AppLocalizations.of(context).translate('gallery_photo'),
+          //           style: normalTextStyle,
+          //         ),
+          //         onTap: () => _presenter.ButtomSheetPickFileAction('File'),
+          //       ),
+          //       ListTile(
+          //         title: Text(
+          //           AppLocalizations.of(context).translate('take_photo'),
+          //           style: normalTextStyle,
+          //         ),
+          //         onTap: () => _presenter.ButtomSheetPickFileAction('Camera'),
+          //       ),
+          //     ],
+          //   ),
+          // );
+        });
+  }
+
+  Widget androidPickFileBottomSheet() {
+    return Container(
+      height: getScreenHeight(context) * 0.25,
+      padding: EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          ListTile(
+            title: Text(
+              'Choose from gallery',
+              style: normalTextStyle,
+            ),
+            onTap: () => _presenter.ButtomSheetPickFileAction('File'),
+          ),
+          ListTile(
+            title: Text(
+              'Take photo',
+              style: normalTextStyle,
+            ),
+            onTap: () => _presenter.ButtomSheetPickFileAction('Camera'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget iOSPickFileBottomSheet() {
+    return Container(
+      height: getScreenHeight(context) * 0.3,
+      padding: EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          ListTile(
+            title: Text(
+              'Choose document',
+              style: normalTextStyle,
+            ),
+            onTap: () => _presenter.ButtomSheetPickFileAction('File'),
+          ),
+          ListTile(
+            title: Text(
+              'Choose from gallery',
+              style: normalTextStyle,
+            ),
+            onTap: () => _presenter.ButtomSheetPickFileAction('Gallery'),
+          ),
+          ListTile(
+            title: Text(
+              'Take photo',
+              style: normalTextStyle,
+            ),
+            onTap: () => _presenter.ButtomSheetPickFileAction('Camera'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget noteIcon(String attachmentNote) {
+    return Container(
+      child: Icon(Icons.phone_iphone),
+    );
+  }
+
+  editNoteButtonAction(
+      /*List<AttachData> attachmentList,*/ int index,
+      AttachData attachData) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) => alertView(index),
+    );
+  }
+
+  Widget alertView(int index) {
+    return Container(
+      height: 300,
+      width: 300,
+      child: AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+        ),
+        title: Icon(Icons.phone_iphone),
+        content: alertContent(index),
+        contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 5),
+      ),
+    );
+  }
+
+  SingleChildScrollView alertContent(int index) {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          AlertFile(index),
+          SizedBox(
+            height: 10,
+          ),
+          alertMessage(index),
+          SizedBox(height: 10),
+          alertActions(index),
+        ],
+      ),
+    );
+  }
+
+  Row AlertFile(int index) {
+    return Row(
+      children: <Widget>[
+        iconWidget(_presenter.getAttachmentFileType(index)),
+        SizedBox(
+          width: 15,
+        ),
+        Text(_presenter.getImageFileName(index)),
+      ],
+    );
+  }
+
+  TextField alertMessage(int index) {
+    return TextField(
+      maxLines: 6,
+      decoration: InputDecoration(
+//            labelText: text ?? '',
+        hintText: "Write Comment here",
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: DARK_GREY,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: GREY,
+          ),
+        ),
+      ),
+      controller: _presenter.attachmentList[index].noteController,
+    );
+  }
+
+  Widget alertActions(int index) {
+    return FlatButton(
+      child: Text(
+        "OK",
+        style: normalBlueTextStyle,
+      ),
+      onPressed: () {
+        widget.mode == FormType.create
+            ? _presenter.updateNoteInCreate(_presenter.attachmentList[index])
+            : _presenter
+                .editAttachmentMonitorFile(_presenter.attachmentList[index]);
+      },
+    );
+  }
+
+  @override
+  void changeState() {
+    setState(() {});
+  }
+
+  @override
+  void showDualAlert(String message,
+      {bool isLocalized, Function leftButtonAction}) {
+    DualActionAlert(
+            context: context,
+            message: message,
+            leftButtonAction: () {
+              leftButtonAction();
+            },
+            rightButtonAction: null,
+            rightButtonTitle: 'Cancel',
+            leftButtonTitle: 'Yes')
+        .showAlert();
+  }
+
+  @override
+  void showSingleAlert(String message, {bool isLocalized}) {
+    ShowAlertMessage(message, context);
+  }
+
+  @override
+  void showError(String errorMessage) {
+    scaffoldKey.currentState.hideCurrentSnackBar();
+    scaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        content: Text(
+          errorMessage,
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+    // TODO: implement showError
+  }
+}
