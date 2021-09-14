@@ -34,6 +34,9 @@ import 'package:templets/Temp_1/Screens_temp1/settings_screen.dart';
 import 'package:templets/Temp_1/Screens_temp1/short_cuts_screen.dart';
 import 'package:templets/Temp_1/Screens_temp1/task_form_screen(tasks).dart';
 import 'package:templets/Temp_1/Screens_temp1/this_week_plan_screen(tasks).dart';
+import 'package:templets/Temp_1/Screens_temp1/todo_screens/AddNewPanelScreen.dart';
+import 'package:templets/Temp_1/Screens_temp1/todo_screens/ArchiveTaskScreen.dart';
+import 'package:templets/Temp_1/Screens_temp1/todo_screens/PanelWithTasksScreen.dart';
 
 class List_temp1 extends StatelessWidget {
   static const routeName = '/list_temp1';
@@ -57,8 +60,8 @@ class List_temp1 extends StatelessWidget {
     'this week plan screen (tasks)',
     'hold screen (tasks)',
     'inprocess (tasks)',
-    'Done tasks (tasks)',
-    'task form screen (tasks)',
+    // 'Done tasks (tasks)',
+    'Archive task screen (tasks)',
     'Add New Panel screen (Tasks screen)',
     'Add New task screen (Tasks screen)',
     'Sticky Notes screen',
@@ -148,11 +151,11 @@ class List_temp1 extends StatelessWidget {
                 case 'inprocess (tasks)':
                   Navigator.of(context).pushNamed(InprocessScreen.routeName);
                   break;
-                case 'Done tasks (tasks)':
+                // case 'Done tasks (tasks)':
+                //   Navigator.of(context).pushNamed(DoneTaskScreen.routeName);
+                //   break;
+                case 'Archive task screen (tasks)':
                   Navigator.of(context).pushNamed(DoneTaskScreen.routeName);
-                  break;
-                case 'task form screen (tasks)':
-                  Navigator.of(context).pushNamed(TaskFormScreen.routeName);
                   break;
                 case 'Add New Panel screen (Tasks screen)':
                   Navigator.of(context).pushNamed(AddNewPanelscreen1.routeName);

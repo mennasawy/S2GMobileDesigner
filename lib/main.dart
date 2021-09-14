@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:templets/Temp_1/Screens_temp1/ContactUs.dart';
-import 'package:templets/Temp_1/Screens_temp1/Monitor/AssignmentInfoFilterWidget.dart';
+import 'package:templets/Temp_1/Screens_temp1/todo_screens/AddNewPanelScreen.dart';
+import 'package:templets/Temp_1/Screens_temp1/todo_screens/ArchiveTaskScreen.dart';
+import 'package:templets/Temp_1/Screens_temp1/todo_screens/PanelWithTasksScreen.dart';
+import 'package:templets/Temp_2/Screens_temp2/todo_screens/AddNewPanelScreen.dart';
+import 'package:templets/Temp_2/Screens_temp2/todo_screens/PanelWithTasksScreen.dart';
+import 'package:templets/Temp_2/Screens_temp2/todo_screens/ToDoListScreen.dart';
 import 'package:templets/Utilities/StorageUtils/noteUda_provider.dart';
 import 'package:templets/Temp_1/Screens_temp1/login_temp_1.dart';
 import 'Temp_1/Screens_temp1/AdvancedSearchAssignmentInfo.dart';
-import 'Temp_1/Screens_temp1/ApplicationsLevels/MenuScreen.dart';
 import 'Temp_1/Screens_temp1/MonitorLogCardDetailsScreen.dart';
 import 'Temp_1/Screens_temp1/Profile_temp_1.dart';
 import 'Temp_1/Screens_temp1/SideMenu.dart';
@@ -19,7 +23,6 @@ import 'Temp_2/Screens_temp2/login_temp_2.dart';
 import 'Temp_2/Screens_temp2/profile_temp_2.dart';
 import 'Temp_2/list_temp2.dart';
 import 'Temp_1/Screens_temp1/about_screen.dart';
-import 'Temp_1/Screens_temp1/Add_New_Panel_screen(Tasks_screen).dart';
 import 'Temp_1/Screens_temp1/Add_New_task_screen(Sticky_Notes).dart';
 import 'Temp_1/Screens_temp1/Add_New_task_screen(Tasks_screen).dart';
 import 'Temp_1/Screens_temp1/App_menus_screen.dart';
@@ -30,11 +33,9 @@ import 'Temp_1/Screens_temp1/check_license_screen.dart';
 import 'Temp_1/Screens_temp1/create_screen(create-edit-clone-view).dart';
 import 'Temp_1/Screens_temp1/Company_settings.dart';
 import 'Temp_1/Screens_temp1/Dashboard_screen.dart';
-import 'Temp_1/Screens_temp1/Done_tasks(tasks).dart';
 import 'Temp_1/Screens_temp1/edit_profile_screen.dart';
 import 'Temp_1/Screens_temp1/filter_search(Advanced_search).dart';
 import 'Temp_1/Screens_temp1/hold_screen(tasks).dart';
-import 'Temp_1/Screens_temp1/inprocess(tasks).dart';
 import 'Temp_1/Screens_temp1/language.dart';
 import 'Temp_1/Screens_temp1/log_screen.dart';
 import 'Temp_1/Screens_temp1/Module_screen.dart';
@@ -53,7 +54,6 @@ import 'Temp_1/Screens_temp1/this_week_plan_screen(tasks).dart';
 
 /////////////////////////////////////////////////////////////
 import 'Temp_2/Screens_temp2/about_screen.dart';
-import 'Temp_2/Screens_temp2/Add_New_Panel_screen(Tasks_screen).dart';
 import 'Temp_2/Screens_temp2/Add_New_task_screen(Sticky_Notes).dart';
 import 'Temp_2/Screens_temp2/Add_New_task_screen(Tasks_screen).dart';
 import 'Temp_2/Screens_temp2/change_password.dart';
@@ -65,7 +65,6 @@ import 'Temp_2/Screens_temp2/Done_tasks(tasks).dart';
 import 'Temp_2/Screens_temp2/edit_profile_screen.dart';
 import 'Temp_2/Screens_temp2/filter_search(Advanced_search).dart';
 import 'Temp_2/Screens_temp2/hold_screen(tasks).dart';
-import 'Temp_2/Screens_temp2/inprocess(tasks).dart';
 import 'Temp_2/Screens_temp2/language.dart';
 import 'Temp_2/Screens_temp2/log_screen.dart';
 import 'Temp_2/Screens_temp2/Monitor_screen.dart';
@@ -132,14 +131,15 @@ class MyApp extends StatelessWidget {
             StickyNotesScreen.routeName: (ctx) => StickyNotesScreen(),
             SupportScreen.routeName: (ctx) => SupportScreen(),
             TaskFormScreen.routeName: (ctx) => TaskFormScreen(),
-//            TaskToDoScreen.routeName: (ctx) => TaskToDoScreen(),
+            TaskToDoScreen2.routeName: (ctx) => TaskToDoScreen2(),
             WeekPlanScreen.routeName: (ctx) => WeekPlanScreen(),
-            FilteredAdvancedSearch.routeName:(ctx)=>FilteredAdvancedSearch(),
-            ContactUs.routeName:(ctx)=>ContactUs(),
-            WorkingDayHour.routeName:(ctx)=>WorkingDayHour(),
-            StickyNotesCreation.routeName:(ctx)=>StickyNotesCreation(),
-            SideMenu.routeName:(ctx)=>SideMenu(),
-            MonitorLogCardDetailsScreen.routeName:(ctx)=>MonitorLogCardDetailsScreen(),
+            FilteredAdvancedSearch.routeName: (ctx) => FilteredAdvancedSearch(),
+            ContactUs.routeName: (ctx) => ContactUs(),
+            WorkingDayHour.routeName: (ctx) => WorkingDayHour(),
+            StickyNotesCreation.routeName: (ctx) => StickyNotesCreation(),
+            SideMenu.routeName: (ctx) => SideMenu(),
+            MonitorLogCardDetailsScreen.routeName: (ctx) =>
+                MonitorLogCardDetailsScreen(),
 
             //temp 2################################################
 
@@ -171,14 +171,13 @@ class MyApp extends StatelessWidget {
             SettingScreen2.routeName: (ctx) => SettingScreen2(),
             ShortCutsScreen2.routeName: (ctx) => ShortCutsScreen2(),
             StickyNotesScreen2.routeName: (ctx) => StickyNotesScreen2(),
-            TaskFormScreen2.routeName: (ctx) => TaskFormScreen2(),
+            ArchiveTaskScreen2.routeName: (ctx) => ArchiveTaskScreen2(),
 //            TaskToDoScreen2.routeName: (ctx) => TaskToDoScreen2(),
             WeekPlanScreen2.routeName: (ctx) => WeekPlanScreen2(),
             AddStickyNote2.routeName: (ctx) => AddStickyNote2(),
             BottomBarScrenn.routeName: (ctx) => BottomBarScrenn(),
             SideMenu.routeName: (ctx) => SideMenu(),
             ShortCutItemScreen.routeName: (ctx) => ShortCutItemScreen(),
-
           }),
     );
   }

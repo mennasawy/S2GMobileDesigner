@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:templets/Temp_2/Screens_temp2/login_temp_2.dart';
 import 'package:templets/Temp_2/Screens_temp2/profile_temp_2.dart';
+import 'package:templets/Temp_2/Screens_temp2/tasks(to-do%20list)screen.dart';
+import 'package:templets/Temp_2/Screens_temp2/todo_screens/AddNewPanelScreen.dart';
+import 'package:templets/Temp_2/Screens_temp2/todo_screens/PanelWithTasksScreen.dart';
+import 'package:templets/Temp_2/Screens_temp2/todo_screens/ToDoListScreen.dart';
 import 'Screens_temp2/about_screen.dart';
 import 'Screens_temp2/Add_New_Panel_screen(Tasks_screen).dart';
 import 'Screens_temp2/Add_New_task_screen(Sticky_Notes).dart';
@@ -50,8 +54,8 @@ class List_temp2 extends StatelessWidget {
     'this week plan screen (tasks)',
     'hold screen (tasks)',
     'inprocess (tasks)',
-    'Done tasks (tasks)',
-    'task form screen (tasks)',
+    // 'Done tasks (tasks)',
+    'Archive task screen (tasks)',
     'Add New Panel screen (Tasks screen)',
     'Add New task screen (Tasks screen)',
     'Sticky Notes screen',
@@ -122,9 +126,9 @@ class List_temp2 extends StatelessWidget {
                 case 'about screen':
                   Navigator.of(context).pushNamed(aboutScreen2.routeName);
                   break;
-//                case 'tasks(to-do list) screen':
-//                  Navigator.of(context).pushNamed(TaskToDoScreen2.routeName);
-//                  break;
+                case 'tasks(to-do list) screen':
+                  Navigator.of(context).pushNamed(TaskToDoScreen2.routeName);
+                  break;
                 case 'chart detail screen':
                   Navigator.of(context).pushNamed(ChartDetail2.routeName);
                   break;
@@ -137,11 +141,11 @@ class List_temp2 extends StatelessWidget {
                 case 'inprocess (tasks)':
                   Navigator.of(context).pushNamed(InprocessScreen2.routeName);
                   break;
-                case 'Done tasks (tasks)':
-                  Navigator.of(context).pushNamed(DoneTaskScreen2.routeName);
-                  break;
-                case 'task form screen (tasks)':
-                  Navigator.of(context).pushNamed(TaskFormScreen2.routeName);
+                // case 'Done tasks (tasks)':
+                //   Navigator.of(context).pushNamed(DoneTaskScreen2.routeName);
+                //   break;
+                case 'Archive task screen (tasks)':
+                  Navigator.of(context).pushNamed(ArchiveTaskScreen2.routeName);
                   break;
                 case 'Add New Panel screen (Tasks screen)':
                   Navigator.of(context).pushNamed(AddNewPanelscreen2.routeName);
